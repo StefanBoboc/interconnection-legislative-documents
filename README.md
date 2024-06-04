@@ -7,16 +7,16 @@
 
 | TITLE | MENTIONS NBR. TO IT | TOP | 
 |----------|-------------------|-----|
-| CONSTITUTION*) from November 21, 1991 (\*republished\*) | 184,210 | 1 |
+| CONSTITUȚIE*) din 21 noiembrie 1991 (\*republicată\*) | 184,210 | 1 |
 | PageCouldNotBeOpened | 57,671 | 2 |
-| LAW no. 47 from May 18, 1992 (\*\*republished\*\*) | 53,615 | 3 |
-| CODE OF CRIMINAL PROCEDURE from July 1, 2010 | 40,157 | 4 |
-| CODE OF CIVIL PROCEDURE from July 1, 2010 (\*\*republished\*\*) | 32,409 | 5 |
-| LAW no. 77 from April 28, 2016 | 32,174 | 6 |
-| PENAL CODE from July 17, 2009 | 20,806 | 7 |
-| LAW no. 334 from July 17, 2006 (\*\*republished\*\*) | 18,733 | 8 |
-| FISCAL CODE from September 8, 2015 | 18,118 | 9 |
-| EMERGENCY ORDINANCE no. 57 from July 3, 2019 | 15,510 | 10 |
+| LEGE nr. 47 din 18 mai 1992 (\*\*republicată\*\*) | 53,615 | 3 |
+| CODUL DE PROCEDURĂ PENALĂ din 1 iulie 2010 | 40,157 | 4 |
+| CODUL DE PROCEDURĂ CIVILĂ din 1 iulie 2010 (\*\*republicat\*\*) | 32,409 | 5 |
+| LEGE nr. 77 din 28 aprilie 2016 | 32,174 | 6 |
+| CODUL PENAL din 17 iulie 2009 | 20,806 | 7 |
+| LEGE nr. 334 din 17 iulie 2006 (\*\*republicată\*\*) | 18,733 | 8 |
+| CODUL FISCAL din 8 septembrie 2015 | 18,118 | 9 |
+| ORDONANȚĂ DE URGENȚĂ nr. 57 din 3 iulie 2019 | 15,510 | 10 |
 
 - Average length of mentions (~34), longest (1247) and shortest (1)
 - Average length in words of the documents (TBA)
