@@ -42,7 +42,7 @@ This path is referenced in `df['document_text']`.
 
 ## Loading Dataframes
 
-Download the zip archive, extract it, and to load the 3 JSON files, run the following code:
+Download [interconnection-legislative-documents.zip](https://drive.google.com/file/d/1vCG7bAMMim05iA0XnPionGEDqkt6FA-G/view?usp=sharing), extract it, and to load the 3 JSON files, run the following code:
 ```
 import pandas as pd
 import gzip
@@ -55,7 +55,7 @@ num_chunks = 3
 
 # Load each chunk from the gzipped JSON files
 for i in range(1, num_chunks + 1):
-    file_name = f'interconnection-legislative-documents_{i}.json.gz'
+    file_name = f'.\\interconnection-legislative-documents\\dataframes\\interconnection-legislative-documents_{i}.json.gz'
     with gzip.open(file_name, 'rt', encoding='utf-8') as f:
         chunk_df = pd.read_json(f, orient='records', lines=True)
         loaded_dfs.append(chunk_df)
