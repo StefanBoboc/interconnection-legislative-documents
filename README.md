@@ -1,6 +1,79 @@
 # interconnection-legislative-documents
 
-## General Dataset Statistics
+## Dataset Overview
+
+The dataset was obtained by scraping the Romanian Ministry of Internal Affairs platform for documents published in the Official Gazette from 2017 to 2023 (https://legislatie.just.ro/). 
+
+The `interconnection-legislative-documents-dataset.zip` archive consists of two components:
+
+### 1. \dataframes
+
+Three JSON files compressed with gzip, containing a total of `1.343.705` records, each with `14 features`:
+
+- `mention_id`: ID of the mention
+- `mention_text`: Text of the mention
+- `mention_url_title_id`: ID of the document title to which the mention refers
+- `mention_url_title`: Title of the document to which the mention refers
+- `mention_url`: URL of the document to which the mention refers
+- `mention_phrase_text`: Text of the phrase in which the mention was identified (the phrase is also part of the `df['document_text']`)
+- `mention_start_pos_in_phrase_text`: Position where the mention starts in the phrase
+- `mention_end_pos_in_phrase_text`: Position where the mention ends in the phrase
+- `mention_start_pos_in_document_text`: Position where the mention starts in the entire document text
+- `mention_end_pos_in_document_text`: Position where the mention ends in the entire document text
+- `document_id`: ID of the document in which the mention was identified
+- `document_title`: Title of the document in which the mention was identified
+- `document_text`: Path to the file containing the text of the document in which the mention was identified
+- `document_url`: URL of the document in which the mention was identified
+
+### 2. \document_content
+
+Files containing the text of the documents where all mentions from the dataframes were identified. 
+
+This directory has the following hierarchy: `\document_content\yyyy\mm\dd\yyyymmddxxx_content.txt`, where:
+
+- `yyyy` represents the publication year of the document
+- `mm` represents the publication month of the document
+- `dd` represents the publication day of the document
+- `xxx` is the document ID for that day
+
+This path is referenced in `df['document_text']`.
+
+***
+
+## Loading Dataframes
+
+Download the zip archive, extract it, and to load the 3 JSON files, run the following code:
+```
+import pandas as pd
+import gzip
+
+# Initialize an empty list to store loaded DataFrames
+loaded_dfs = []
+
+# Number of chunks/files
+num_chunks = 3 
+
+# Load each chunk from the gzipped JSON files
+for i in range(1, num_chunks + 1):
+    file_name = f'interconnection-legislative-documents_{i}.json.gz'
+    with gzip.open(file_name, 'rt', encoding='utf-8') as f:
+        chunk_df = pd.read_json(f, orient='records', lines=True)
+        loaded_dfs.append(chunk_df)
+
+# Concatenate all loaded DataFrames into a single DataFrame
+df = pd.concat(loaded_dfs, ignore_index=True)
+
+# Now df contains the concatenated DataFrame from all chunks/files
+df.head()
+```
+
+***
+
+## Statistics
+
+:warning: The dataset has been reprocessed, so there may be slight discrepancies between the dataset and the following statistics :warning:
+
+### General Dataset Statistics
 - Number of unique mentions: 229,503
 - Total number of titles (unique): 42,761
 - Titles with the top k most mentions:
@@ -21,9 +94,9 @@
 - Average length of mentions (~34), longest (1247) and shortest (1)
 - Average length in words of the documents (TBA)
 
-## Particulary Dataset Statistics
+### Particulary Dataset Statistics
 
-### PRD_DOCUMENT - Initial form of the documents dataset
+#### PRD_DOCUMENT - Initial form of the documents dataset
 
 - Scanned legislative documents: 64,249
 - Documents with unique titles: 60,797
@@ -44,16 +117,16 @@
 
 - Unique links: 63,618. This means we have duplicate links: 64,249 (total) - 63,618 (unique) = 631 (duplicates). There is only the occurrence of the same link twice (scraping error???), which accounts for some of the duplicate titles.
 
-### PRD_MENTION - Initial form of the mentions dataset
+#### PRD_MENTION - Initial form of the mentions dataset
 - Total mentions: 1,449,027
 - Total unique mentions: 229,503
 
-### UNIQUE_DOCUMENT - After removing duplicates
+#### UNIQUE_DOCUMENT - After removing duplicates
 - Total processed documents: 63,618
 - Unique titles: 60,797
 - Unique URLs: 63,618
 
-### UNIQUE_MENTION - After removing duplicates based on FK(doc_id)
+#### UNIQUE_MENTION - After removing duplicates based on FK(doc_id)
 - Total mentions found: 1,440,242
 - Total unique mentions: 229,503
 - Mentions that could not be accessed (9,957 unique links)
